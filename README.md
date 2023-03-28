@@ -104,7 +104,6 @@ module "backstage" {
 | <a name="input_lb_security_group_ids"></a> [lb\_security\_group\_ids](#input\_lb\_security\_group\_ids) | LB Security Group IDs for ingress access to the health check task definition. | `list(string)` | n/a | yes |
 | <a name="input_max_count"></a> [max\_count](#input\_max\_count) | Maximum number of ECS tasks to run for the service. | `number` | `6` | no |
 | <a name="input_min_count"></a> [min\_count](#input\_min\_count) | Minimum number of ECS tasks to run for the service. | `number` | `1` | no |
-| <a name="input_region"></a> [region](#input\_region) | AWS region | `string` | `"us-east-1"` | no |
 | <a name="input_route_53_private_zone"></a> [route\_53\_private\_zone](#input\_route\_53\_private\_zone) | Used with `name` field to get a private Hosted Zone | `bool` | `false` | no |
 | <a name="input_route_53_record_type"></a> [route\_53\_record\_type](#input\_route\_53\_record\_type) | Health check Route53 record type | `string` | `"A"` | no |
 | <a name="input_route_53_records"></a> [route\_53\_records](#input\_route\_53\_records) | List of A record domains to create for the health check service | `list(string)` | n/a | yes |

@@ -215,9 +215,11 @@ resource "aws_route53_record" "this" {
 ## route 53
 ################################################################################
 module "ecs-service-autoscaling" {
-  source           = "git@github.com:cn-terraform/terraform-aws-ecs-service-autoscaling?ref=1.0.6"
-  name_prefix      = "${var.cluster_name}-backstage"
-  ecs_cluster_name = var.cluster_name
-  ecs_service_name = aws_ecs_service.this.name
-  tags             = var.tags
+  source                    = "git@github.com:cn-terraform/terraform-aws-ecs-service-autoscaling?ref=1.0.6"
+  name_prefix               = "${var.cluster_name}-backstage"
+  ecs_cluster_name          = var.cluster_name
+  ecs_service_name          = aws_ecs_service.this.name
+  tags                      = var.tags
+  scale_target_min_capacity = var.min_count
+  scale_target_max_capacity = var.max_count
 }
