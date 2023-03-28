@@ -13,8 +13,8 @@ on:  # yamllint disable-line rule:truthy
 jobs:
   security:
     runs-on:
+      - self-hosted
       - refarch
-      - dev
     name: snyk
     steps:
       - name: checkout

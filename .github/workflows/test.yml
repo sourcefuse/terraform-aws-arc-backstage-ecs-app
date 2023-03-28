@@ -13,8 +13,8 @@ on:  # yamllint disable-line rule:truthy
 jobs:
   tflint:
     runs-on:
+      - self-hosted
       - refarch
-      - dev
     name: tflint
     steps:
       - uses: actions/checkout@master
