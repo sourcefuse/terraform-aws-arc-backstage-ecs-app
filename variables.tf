@@ -58,6 +58,12 @@ variable "subnet_ids" {
   type        = list(string)
 }
 
+variable "egress_cidr_block" {
+  default     = "0.0.0.0/0"
+  type        = string
+  description = "ECS Tasks egress CIDR block"
+}
+
 variable "task_definition_cpu" {
   type        = number
   description = "Number of cpu units used by the task. If the requires_compatibilities is FARGATE this field is required."

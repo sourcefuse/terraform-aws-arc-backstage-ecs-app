@@ -30,7 +30,7 @@ resource "aws_security_group" "this" {
     from_port   = 0
     protocol    = "-1"
     to_port     = 0
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = [var.egress_cidr_block]
   }
 
   tags = merge(var.tags, tomap({
