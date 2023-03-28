@@ -15,8 +15,9 @@ terraform {
 ## security
 ################################################################################
 resource "aws_security_group" "this" {
-  name   = "${var.cluster_name}-backstage"
-  vpc_id = var.vpc_id
+  name        = "${var.cluster_name}-backstage"
+  description = "Backstage security group for traffic between the ALB and the ECS tasks."
+  vpc_id      = var.vpc_id
 
   ingress {
     from_port       = var.app_port_number

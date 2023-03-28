@@ -1,0 +1,6 @@
+ignore:
+  SNYK-CC-TF-73:
+    - 'main.tf >  resource > aws_security_group[this] > egress':
+        reason: Outbound egress is expected since Backstage communicates with many outside resoruces.
+        expires: 2025-04-01T00:00:00.000Z
+        created: 2023-02-28T18:20:39.256Z
