@@ -9,7 +9,7 @@ Upstream dependencies:
 * PostgreSQL Database and Service Account. See the [Backstage Docs](https://backstage.io/docs/getting-started/configuration/) for more info. See our [ARC DB module](https://github.com/sourcefuse/terraform-aws-ref-arch-db) for the simplest set up.
 * ECS Cluster with an already configured HTTPS listener for an ALB. See our [ARC ECS module](https://github.com/sourcefuse/terraform-aws-refarch-ecs) for the simplest integration.
 * Route53 Zone for an A record for Backstage
-* Backstage Image that can be pulled from ECR or DockerHub. Private DockerHub registries will require additional configuraiton.
+* Backstage image that can be pulled from ECR or DockerHub. Private DockerHub registries will require additional configuraiton.
 * Secret in secrets manager with the following properties.
 ```json
 {
