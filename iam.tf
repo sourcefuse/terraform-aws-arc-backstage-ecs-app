@@ -13,11 +13,11 @@ data "aws_iam_policy_document" "assume" {
 }
 
 resource "aws_iam_role" "execution" {
-  name_prefix        = "backstage-${var.environment}-execution-"
+  name               = "backstage-${var.environment}-execution"
   assume_role_policy = data.aws_iam_policy_document.assume.json
 
   tags = merge(var.tags, tomap({
-    NamePrefix = "backstage-${var.environment}-execution-"
+    Name = "backstage-${var.environment}-execution"
   }))
 }
 
@@ -29,22 +29,30 @@ resource "aws_iam_policy_attachment" "execution" {
   roles      = [aws_iam_role.execution.name]
 }
 
+// TODO: fix below
 data "aws_secretsmanager_secret" "backstage_secret" {
   name = var.secret_name
+}
+
+data "aws_secretsmanager_secret" "backstage_private_key" {
+  name = var.private_key_secret_name
 }
 
 ################################################################################
 ## secrets manager
 ################################################################################
 resource "aws_iam_policy" "secrets_manager_read_policy" {
-  name_prefix = "backstage-${var.environment}-secrets-manager-ro-"
+  name = "backstage-${var.environment}-secrets-manager-ro"
 
   policy = jsonencode({
     Version = "2012-10-17",
     Statement = [
       {
-        Effect   = "Allow",
-        Resource = [data.aws_secretsmanager_secret.backstage_secret.arn]
+        Effect = "Allow",
+        Resource = [
+          data.aws_secretsmanager_secret.backstage_secret.arn,
+          data.aws_secretsmanager_secret.backstage_private_key.arn
+        ]
         Action = [
           "secretsmanager:GetSecretValue"
         ],
@@ -53,7 +61,7 @@ resource "aws_iam_policy" "secrets_manager_read_policy" {
   })
 
   tags = merge(var.tags, tomap({
-    NamePrefix = "backstage-${var.environment}-secrets-manager-ro-"
+    Name = "backstage-${var.environment}-secrets-manager-ro"
   }))
 }
 
