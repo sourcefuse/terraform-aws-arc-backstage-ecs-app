@@ -72,12 +72,12 @@ module "backstage_container_definition" {
       valueFrom = "${data.aws_secretsmanager_secret.backstage_secret.arn}:GITHUB_TOKEN::"
     },
     {
-      name      = "GITHUB_CLIENT_ID",
-      valueFrom = "${data.aws_secretsmanager_secret.backstage_secret.arn}:GITHUB_CLIENT_ID::"
+      name      = "AUTH_GITHUB_CLIENT_ID",
+      valueFrom = "${data.aws_secretsmanager_secret.backstage_secret.arn}:AUTH_GITHUB_CLIENT_ID::"
     },
     {
-      name      = "GITHUB_CLIENT_SECRET",
-      valueFrom = "${data.aws_secretsmanager_secret.backstage_secret.arn}:GITHUB_CLIENT_SECRET::"
+      name      = "AUTH_GITHUB_CLIENT_SECRET",
+      valueFrom = "${data.aws_secretsmanager_secret.backstage_secret.arn}:AUTH_GITHUB_CLIENT_SECRET::"
     },
     {
       name      = "POSTGRES_HOST"
@@ -87,6 +87,30 @@ module "backstage_container_definition" {
       name      = "POSTGRES_PORT"
       valueFrom = "${data.aws_secretsmanager_secret.backstage_secret.arn}:POSTGRES_PORT::"
     },
+    {
+      name      = "INTEGRATION_GITHUB_APP_ID"
+      valueFrom = "${data.aws_secretsmanager_secret.backstage_secret.arn}:INTEGRATION_GITHUB_APP_ID::"
+    },
+    {
+      name      = "INTEGRATION_GITHUB_WEBHOOK_URL"
+      valueFrom = "${data.aws_secretsmanager_secret.backstage_secret.arn}:INTEGRATION_GITHUB_WEBHOOK_URL::"
+    },
+    {
+      name      = "INTEGRATION_GITHUB_CLIENT_ID"
+      valueFrom = "${data.aws_secretsmanager_secret.backstage_secret.arn}:INTEGRATION_GITHUB_CLIENT_ID::"
+    },
+    {
+      name      = "INTEGRATION_GITHUB_CLIENT_SECRET"
+      valueFrom = "${data.aws_secretsmanager_secret.backstage_secret.arn}:INTEGRATION_GITHUB_CLIENT_SECRET::"
+    },
+    {
+      name      = "INTEGRATION_GITHUB_WEBHOOK_SECRET"
+      valueFrom = "${data.aws_secretsmanager_secret.backstage_secret.arn}:INTEGRATION_GITHUB_WEBHOOK_SECRET::"
+    },
+    {
+      name      = "INTEGRATION_GITHUB_PRIVATE_KEY"
+      valueFrom = data.aws_secretsmanager_secret.backstage_private_key.arn
+    }
   ]
 
   environment = [
@@ -97,7 +121,7 @@ module "backstage_container_definition" {
     {
       name  = "ENVIRONMENT"
       value = var.backstage_environment // TODO: make variable
-    },
+    }
   ]
 
   tags = var.tags

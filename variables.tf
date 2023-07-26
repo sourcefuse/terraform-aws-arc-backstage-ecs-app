@@ -87,7 +87,13 @@ variable "execution_policy_attachment_arns" {
 variable "secret_name" {
   type        = string
   description = "Name of the secret in AWS Secrets Manager that contains Backstage secrets, such as POSTGRES_USER and POSTGRES_PASSWORD"
-  default     = "dev-backstage"
+  default     = "poc-backstage"
+}
+
+variable "private_key_secret_name" {
+  type        = string
+  description = "Name of the secret in AWS Secrets Manager that contains Backstage private key for GitHub authentication. The secret should be stored as plain text in ASM."
+  default     = "poc-backstage-private-key"
 }
 
 variable "route_53_records" {
