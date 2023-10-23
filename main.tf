@@ -60,6 +60,10 @@ module "backstage_container_definition" {
 
   secrets = [
     {
+      name      = "ENABLE_GITHUB_SYNC",
+      valueFrom = "${data.aws_secretsmanager_secret.backstage_secret.arn}:ENABLE_GITHUB_SYNC::"
+    },
+    {
       name      = "POSTGRES_USER",
       valueFrom = "${data.aws_secretsmanager_secret.backstage_secret.arn}:POSTGRES_USER::"
     },
@@ -116,6 +120,10 @@ module "backstage_container_definition" {
   environment = [
     {
       name  = "BASE_URL"
+      value = "https://${var.app_host_name}"
+    },
+    {
+      name  = "FRONTEND_BASE_URL"
       value = "https://${var.app_host_name}"
     },
     {
