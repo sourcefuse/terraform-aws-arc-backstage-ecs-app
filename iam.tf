@@ -45,10 +45,10 @@ resource "aws_iam_policy" "secrets_manager_read_policy" {
   name = "backstage-${var.environment}-secrets-manager-ro"
 
   policy = jsonencode({
-    Version = "2012-10-17",
+    Version   = "2012-10-17",
     Statement = [
       {
-        Effect = "Allow",
+        Effect   = "Allow",
         Resource = [
           data.aws_secretsmanager_secret.backstage_secret.arn,
           data.aws_secretsmanager_secret.backstage_private_key.arn
@@ -65,8 +65,7 @@ resource "aws_iam_policy" "secrets_manager_read_policy" {
   }))
 }
 
-resource "aws_iam_policy_attachment" "secrets_manager_read" {
-  name       = "backstage-${var.environment}-secrets-manager-ro"
-  roles      = [aws_iam_role.execution.name]
+resource "aws_iam_role_policy_attachment" "secrets_manager_read" {
+  role       = aws_iam_role.execution.name
   policy_arn = aws_iam_policy.secrets_manager_read_policy.arn
 }
