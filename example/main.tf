@@ -13,7 +13,8 @@ terraform {
 }
 
 module "tags" {
-  source = "git::https://github.com/sourcefuse/terraform-aws-refarch-tags?ref=1.1.0"
+  source  = "sourcefuse/arc-tags/aws"
+  version = "1.2.3"
 
   environment = var.environment
   project     = "ARC"
@@ -35,8 +36,8 @@ locals {
 ## ecs
 ################################################################################
 module "ecs" {
-  source = "git@github.com:sourcefuse/terraform-aws-refarch-ecs?ref=1.2.4"
-
+  source      = "sourcefuse/arc-ecs/aws"
+  version     = "1.4.1"
   environment = var.environment
   namespace   = var.namespace
 
@@ -51,7 +52,7 @@ module "ecs" {
   // -------------------------- END ------------------------- //
 
   ## create acm certificate and dns record for health check
-  route_53_zone                 = local.route_53_zone
+  route_53_zone_name            = local.route_53_zone
   acm_domain_name               = var.acm_domain_name
   acm_subject_alternative_names = []
   health_check_route_53_records = [
