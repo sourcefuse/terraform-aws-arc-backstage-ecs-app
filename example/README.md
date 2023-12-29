@@ -1,4 +1,4 @@
-# terraform-aws-module-template example
+# arc-backstage-ecs-app example
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -19,8 +19,8 @@
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_backstage"></a> [backstage](#module\_backstage) | ../ | n/a |
-| <a name="module_ecs"></a> [ecs](#module\_ecs) | git@github.com:sourcefuse/terraform-aws-refarch-ecs | 1.2.4 |
-| <a name="module_tags"></a> [tags](#module\_tags) | git::https://github.com/sourcefuse/terraform-aws-refarch-tags | 1.1.0 |
+| <a name="module_ecs"></a> [ecs](#module\_ecs) | sourcefuse/arc-ecs/aws | 1.4.1 |
+| <a name="module_tags"></a> [tags](#module\_tags) | sourcefuse/arc-tags/aws | 1.2.3 |
 
 ## Resources
 

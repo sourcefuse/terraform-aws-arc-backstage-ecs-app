@@ -21,15 +21,13 @@ resource "aws_iam_role" "execution" {
   }))
 }
 
-resource "aws_iam_policy_attachment" "execution" {
+resource "aws_iam_role_policy_attachment" "execution" {
   for_each = toset(var.execution_policy_attachment_arns)
 
-  name       = "backstage-${var.environment}-execution"
   policy_arn = each.value
-  roles      = [aws_iam_role.execution.name]
+  role       = aws_iam_role.execution.name
 }
 
-// TODO: fix below
 data "aws_secretsmanager_secret" "backstage_secret" {
   name = var.secret_name
 }
@@ -45,10 +43,10 @@ resource "aws_iam_policy" "secrets_manager_read_policy" {
   name = "backstage-${var.environment}-secrets-manager-ro"
 
   policy = jsonencode({
-    Version   = "2012-10-17",
+    Version = "2012-10-17",
     Statement = [
       {
-        Effect   = "Allow",
+        Effect = "Allow",
         Resource = [
           data.aws_secretsmanager_secret.backstage_secret.arn,
           data.aws_secretsmanager_secret.backstage_private_key.arn
