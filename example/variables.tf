@@ -2,6 +2,7 @@
 ## shared
 ################################################################
 variable "namespace" {
+  type        = string
   description = "Namespace for the resources."
   default     = "refarchdevops"
 }
