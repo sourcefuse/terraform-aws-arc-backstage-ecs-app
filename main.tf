@@ -59,10 +59,10 @@ module "backstage_container_definition" {
   ]
 
   secrets = [
-    #    {
-    #      name      = "ENABLE_GITHUB_SYNC",
-    #      valueFrom = "${data.aws_secretsmanager_secret.backstage_secret.arn}:ENABLE_GITHUB_SYNC::"
-    #    },
+    {
+      name      = "ENABLE_GITHUB_SYNC",
+      valueFrom = "${data.aws_secretsmanager_secret.backstage_secret.arn}:ENABLE_GITHUB_SYNC::"
+    },
     {
       name      = "POSTGRES_USER",
       valueFrom = "${data.aws_secretsmanager_secret.backstage_secret.arn}:POSTGRES_USER::"
@@ -246,7 +246,7 @@ resource "aws_route53_record" "this" {
 ################################################################################
 ## route 53
 ################################################################################
-module "ecs-service-autoscaling" {
+module "ecs_service_autoscaling" {
   source                    = "git@github.com:cn-terraform/terraform-aws-ecs-service-autoscaling?ref=1.0.6"
   name_prefix               = "${var.cluster_name}-backstage"
   ecs_cluster_name          = var.cluster_name
