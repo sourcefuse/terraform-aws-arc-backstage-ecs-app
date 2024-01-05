@@ -66,7 +66,7 @@ module "backstage" {
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_backstage_container_definition"></a> [backstage\_container\_definition](#module\_backstage\_container\_definition) | ./ecs-container-definition | n/a |
-| <a name="module_ecs_service_autoscaling"></a> [ecs\_service\_autoscaling](#module\_ecs\_service\_autoscaling) | git@github.com:cn-terraform/terraform-aws-ecs-service-autoscaling | 1.0.6 |
+| <a name="module_ecs_service_autoscaling"></a> [ecs\_service\_autoscaling](#module\_ecs\_service\_autoscaling) | git::https://github.com/cn-terraform/terraform-aws-ecs-service-autoscaling | 1.0.6 |
 
 ## Resources
 
