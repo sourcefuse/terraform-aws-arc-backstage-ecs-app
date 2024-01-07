@@ -112,6 +112,10 @@ module "backstage_container_definition" {
       valueFrom = "${data.aws_secretsmanager_secret.backstage_secret.arn}:INTEGRATION_GITHUB_WEBHOOK_SECRET::"
     },
     {
+      name      = "SNYK_TOKEN"
+      valueFrom = "${data.aws_secretsmanager_secret.backstage_secret.arn}:SNYK_TOKEN::"
+    },
+    {
       name      = "INTEGRATION_GITHUB_PRIVATE_KEY"
       valueFrom = data.aws_secretsmanager_secret.backstage_private_key.arn
     }
