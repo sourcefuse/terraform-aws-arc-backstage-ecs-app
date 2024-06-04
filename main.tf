@@ -58,7 +58,7 @@ module "backstage_container_definition" {
     }
   ]
 
-  secrets = [
+  secrets = concat([
     {
       name      = "ENABLE_GITHUB_SYNC",
       valueFrom = "${data.aws_secretsmanager_secret.backstage_secret.arn}:ENABLE_GITHUB_SYNC::"
@@ -119,22 +119,25 @@ module "backstage_container_definition" {
       name      = "INTEGRATION_GITHUB_PRIVATE_KEY"
       valueFrom = data.aws_secretsmanager_secret.backstage_private_key.arn
     }
-  ]
+  ], var.secret_list)
 
-  environment = [
-    {
-      name  = "BASE_URL"
-      value = "https://${var.app_host_name}"
-    },
-    {
-      name  = "FRONTEND_BASE_URL"
-      value = "https://${var.app_host_name}"
-    },
-    {
-      name  = "ENVIRONMENT"
-      value = var.backstage_environment // TODO: make variable
-    }
-  ]
+  environment = concat(
+    [
+      {
+        name  = "BASE_URL"
+        value = "https://${var.app_host_name}"
+      },
+      {
+        name  = "FRONTEND_BASE_URL"
+        value = "https://${var.app_host_name}"
+      },
+      {
+        name  = "ENVIRONMENT"
+        value = var.backstage_environment // TODO: make variable
+      }
+    ],
+    var.environment_variables
+  )
 
   tags = var.tags
 }

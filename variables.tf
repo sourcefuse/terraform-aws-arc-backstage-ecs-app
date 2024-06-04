@@ -151,6 +151,25 @@ variable "backstage_environment" {
   type        = string
   description = "Backstage environment"
 }
+
+variable "environment_variables" {
+  type = list(object({
+    name  = string
+    value = string
+  }))
+  description = "(optional) List of additional environment variables"
+  default     = []
+}
+
+variable "secret_list" {
+  type = list(object({
+    name      = string
+    valueFrom = string
+  }))
+  description = "(optional) List of additional Secrets"
+  default     = []
+}
+
 ################################################################################
 ## alb
 ################################################################################
