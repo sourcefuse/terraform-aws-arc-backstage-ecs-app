@@ -220,6 +220,14 @@ resource "aws_ecs_task_definition" "this" {
   memory                   = var.task_definition_memory
   execution_role_arn       = aws_iam_role.execution.arn
 
+  dynamic "ephemeral_storage" {
+    for_each = var.ephemeral_storage == null ? [] : [1]
+
+    content {
+      size_in_gib = var.ephemeral_storage
+    }
+  }
+
   container_definitions = jsonencode([
     module.backstage_container_definition.container_definition
   ])
