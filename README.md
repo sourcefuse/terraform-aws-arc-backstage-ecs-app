@@ -51,7 +51,7 @@ Upstream dependencies:
 }
 
 ```
-![Example Architecture](./static/arc_backstage.png)
+
 ## Usage
 **Note**: the example below is does not have a pinned version. Be sure to pin your version. Refer to the `example` folder for a working example version.
 
