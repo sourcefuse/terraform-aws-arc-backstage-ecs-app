@@ -30,6 +30,8 @@ Runs Backstage developer portal as an ECS Fargate service behind an ALB with Rou
 - Secrets Manager integration for DB credentials and GitHub tokens
 - Auto-scaling between configurable min/max task counts
 
+For more information about this repository and its usage, please see [Terraform AWS BACKSTAGE ECS Usage Guide](https://github.com/sourcefuse/terraform-aws-arc-backstage-ecs-app/blob/main/docs/module-usage-guide/README.md).
+
 ## Quickstart
 Upstream dependencies:
 
