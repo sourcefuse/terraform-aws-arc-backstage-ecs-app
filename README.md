@@ -1,4 +1,4 @@
-![Module Banner](./static/arc_backstage.png)
+
 
 # [terraform-aws-arc-backstage-ecs-app](https://github.com/sourcefuse/terraform-aws-arc-backstage-ecs-app)
 
@@ -22,6 +22,9 @@
 
 Runs Backstage developer portal as an ECS Fargate service behind an ALB with Route53 DNS and Secrets Manager integration.
 
+
+![Module Banner](./static/arc_backstage.png)
+
 ## What It Does
 
 - ECS Fargate task definition and service for Backstage
@@ -31,6 +34,7 @@ Runs Backstage developer portal as an ECS Fargate service behind an ALB with Rou
 - Auto-scaling between configurable min/max task counts
 
 For more information about this repository and its usage, please see [Terraform AWS BACKSTAGE ECS Usage Guide](https://github.com/sourcefuse/terraform-aws-arc-backstage-ecs-app/blob/main/docs/module-usage-guide/README.md).
+
 
 ## Quickstart
 Upstream dependencies:
